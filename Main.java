@@ -74,7 +74,21 @@ public class Main
 					break;
 				case 3:
 					/***** TODO: (Part 1) implement a comparison case using the comparable method on the Person class to compare self to p1-p4*****/
-					
+
+					for (int i = 0; i < people.length; i++) {
+						for (int j = 0; j < people.length - 1; j++) {
+							if (people[j].compareTo(people[j + 1]) > 0) {
+								Person temp = people[j];
+								people[j] = people[j + 1];
+								people[j + 1] = temp;
+							}
+						}
+					}
+
+					for (int i = 0; i < people.length; i++) {
+						System.out.println(people[i]);
+					}
+
 					System.out.println("\nReturning to main menu.\n");
 					break;
 				case 4:

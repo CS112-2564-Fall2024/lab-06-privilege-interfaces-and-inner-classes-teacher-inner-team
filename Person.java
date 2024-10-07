@@ -1,6 +1,23 @@
-public class Person
+public class Person implements Comparable<Person>
 {
-	/***** TODO: (Part 2) create helper inner class for Identity*****/
+	public class Identity {
+		String pronouns;
+		String background;
+
+		public Identity(String pronouns, String background) {
+			this.pronouns = pronouns;
+			this.background = background;
+		}
+
+		public Identity() {
+			this.pronouns = "Xe,Xim";
+			this.background = "Unknown.";
+		}
+
+		public String toString() {
+			return "Pronouns: " + this.pronouns + " Background: " + this.background;
+		}
+	}
 
 	// CONSTANT VARIABLES
 	public static final String DEFAULT_NAME = "Jamie Doe";
@@ -21,7 +38,7 @@ public class Person
 	}
 	
 	public Person(Person original) {
-		if(original == null) {
+		if (original == null) {
 			throw new IllegalArgumentException("Cannot copy null obect in Person copy constructor");
 		} else {
 			this.setAll(original.name, original.story, original.privilege);
@@ -82,4 +99,15 @@ public class Person
 
 	// INTERFACE METHODS
 	/***** TODO: (Part 1) override compareTo method to implement Comparable interface*****/
+	public int compareTo(Person other) {
+		if (this.privilege < other.privilege) {
+			return -1;
+		}
+		else if (this.privilege > other.privilege) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
 }
